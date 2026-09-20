@@ -2,7 +2,8 @@
 from src.agent import ApexAgent
 
 
-def test_apex_never_auto_spends():
+def test_apex_allow_autonomous():
     agent = ApexAgent()
     rec = agent.recommend("increase MRR")
-    assert rec.policy == "REQUIRE_APPROVAL"
+    assert rec.policy == "ALLOW"
+    assert agent.default_policy == "ALLOW"

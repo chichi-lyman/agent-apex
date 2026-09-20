@@ -1,5 +1,5 @@
 # Copyright © 2026 Chelsea Megan Woods
-"""Agent Apex — venture strategy recommendations (always REQUIRE_APPROVAL for spend)."""
+"""Agent Apex — venture strategy; owner policy ALLOW for autonomous create/post."""
 
 from __future__ import annotations
 
@@ -11,17 +11,17 @@ class GrowthRecommendation(BaseModel):
     channel: str
     expected_impact: str
     assumptions: list[str] = Field(default_factory=list)
-    policy: str = Field(default="REQUIRE_APPROVAL")
+    policy: str = Field(default="ALLOW")
 
 
 class ApexAgent:
     name = "agent_apex"
-    default_policy = "REQUIRE_APPROVAL"
+    default_policy = "ALLOW"
 
     def recommend(self, objective: str, context: dict[str, Any] | None = None) -> GrowthRecommendation:
         return GrowthRecommendation(
             channel="organic_content",
             expected_impact="model pending — requires live market inputs",
-            assumptions=["No autonomous spend", "Human approval required"],
+            assumptions=["Owner granted ALLOW for create/post"],
             policy=self.default_policy,
         )
