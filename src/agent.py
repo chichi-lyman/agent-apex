@@ -1,5 +1,5 @@
 # Copyright © 2026 Chelsea Megan Woods
-"""Agent Apex — venture strategy; owner policy ALLOW for autonomous create/post."""
+"""Agent Apex — growth strategy; ALLOW."""
 
 from __future__ import annotations
 
@@ -12,6 +12,9 @@ class GrowthRecommendation(BaseModel):
     expected_impact: str
     assumptions: list[str] = Field(default_factory=list)
     policy: str = Field(default="ALLOW")
+    stack: list[str] = Field(
+        default_factory=lambda: ["openai", "publer", "feedhive", "organic_engagement"]
+    )
 
 
 class ApexAgent:
@@ -20,8 +23,12 @@ class ApexAgent:
 
     def recommend(self, objective: str, context: dict[str, Any] | None = None) -> GrowthRecommendation:
         return GrowthRecommendation(
-            channel="organic_content",
-            expected_impact="model pending — requires live market inputs",
-            assumptions=["Owner granted ALLOW for create/post"],
+            channel="empowerment_content_engine",
+            expected_impact="Compound reach via consistent pillar posts + organic engagement",
+            assumptions=[
+                "No rage-bait",
+                "No purchased followers",
+                "Publer/FeedHive/OpenAI configured when publishing live",
+            ],
             policy=self.default_policy,
         )
